@@ -1,0 +1,830 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  defaultDamping Damping {
+  }
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  fieldOfView 0.7
+  orientation -0.023768754556393795 -0.6449587306135139 -0.7638476825337908 3.1094317742456377
+  position -0.5898369076914068 8.562542056124034 1.0519421135756093
+}
+DirectionalLight {
+  direction 0 -20 1
+  intensity 2
+  on FALSE
+}
+RectangleArena {
+  translation -0.02 0 0
+  floorSize 3 5
+}
+DEF RobotLightC Robot {
+  translation -0.07 0.04 -0.95
+  children [
+    Receiver {
+      name "rec1"
+      channel 2
+    }
+    Receiver {
+      name "rec2"
+      channel 3
+    }
+    Emitter {
+      name "trans"
+      range 1
+      maxRange 1
+      channel 1
+    }
+    Compass {
+      name "com"
+      yAxis FALSE
+    }
+    LightSensor {
+      translation -0.02 0.04 0.02
+      rotation 0 1 0 -2.35619
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls1"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation -0.02 0.04 -0.02
+      rotation 0 1 0 -3.92699
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls2"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation 0.02 0.04 -0.02
+      rotation 0 1 0 0.785398
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls3"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation 0.02 0.04 0.02
+      rotation 0 1 0 -0.785398
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls4"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    DistanceSensor {
+      translation 0 0 0.1
+      rotation 0 1 0 -1.5708
+      children [
+        DEF DS Shape {
+          appearance Appearance {
+            material Material {
+            }
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds"
+      boundingObject USE DS
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.2 400 0
+        0.5 1000 0
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 -0.05
+      }
+      device [
+        DEF wheel4 RotationalMotor {
+          name "wheel4"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL4 Solid {
+        translation -0.05999991814307717 -9.632061444724494e-06 -0.05000362374001422
+        rotation 0.0331224821823552 -0.033045768653970346 0.9989048394857979 1.571866762233069
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel4"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 -0.05
+      }
+      device [
+        DEF wheel3 RotationalMotor {
+          name "wheel3"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL3 Solid {
+        translation 0.060000176302764274 -1.3570422243021472e-05 -0.04999976121740486
+        rotation 0.033052858076168264 -0.03297527418051867 0.9989094753108093 1.5718690848001053
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel3"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 0.05
+      }
+      device [
+        DEF wheel2 RotationalMotor {
+          name "wheel2"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL2 Solid {
+        translation -0.060002157958187 -8.7540512070535e-06 0.049996310781291034
+        rotation 0.033122390039492314 -0.03304586831487273 0.9989048392441533 1.5718664036508943
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    DEF BODY Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 0.05
+      }
+      device [
+        DEF wheel1 RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.06000190297626937 6.2227360664119e-06 0.049995882054905696
+        rotation -0.04651496824615402 0.046637305478202655 -0.9978283015964179 4.710224110905362
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel1"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+  ]
+  name "RL"
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "RobotLightP"
+}
+DEF RobotLightC Robot {
+  translation -0.03 0.04 -1.44
+  children [
+    Receiver {
+      name "rec1"
+      channel 1
+    }
+    Receiver {
+      name "rec2"
+      channel 3
+    }
+    Emitter {
+      name "trans"
+      range 1
+      maxRange 1
+      channel 2
+    }
+    Compass {
+      name "com"
+    }
+    LightSensor {
+      translation -0.02 0.04 0.02
+      rotation 0 1 0 -2.35619
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls1"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation -0.02 0.04 -0.02
+      rotation 0 1 0 -3.92699
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls2"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation 0.02 0.04 -0.02
+      rotation 0 1 0 0.785398
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls3"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation 0.02 0.04 0.02
+      rotation 0 1 0 -0.785398
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls4"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    DistanceSensor {
+      translation 0 0 0.1
+      rotation 0 1 0 -1.5708
+      children [
+        DEF DS Shape {
+          appearance Appearance {
+            material Material {
+            }
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds"
+      boundingObject USE DS
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.2 400 0
+        0.5 1000 0
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 -0.05
+      }
+      device [
+        DEF wheel4 RotationalMotor {
+          name "wheel4"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL4 Solid {
+        translation -0.05999991814307717 -9.632061444723267e-06 -0.05000362374001422
+        rotation 0.03312248218235529 -0.03304576865397048 0.9989048394857979 1.5718667622330686
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel4"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 -0.05
+      }
+      device [
+        DEF wheel3 RotationalMotor {
+          name "wheel3"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL3 Solid {
+        translation 0.060000176302764274 -1.357042224302485e-05 -0.04999976121740486
+        rotation 0.03305285807616838 -0.03297527418051872 0.9989094753108093 1.5718690848001051
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel3"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 0.05
+      }
+      device [
+        DEF wheel2 RotationalMotor {
+          name "wheel2"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL2 Solid {
+        translation -0.060002157958187 -8.754051207054472e-06 0.049996310781291034
+        rotation 0.03312239003949235 -0.033045868314872766 0.9989048392441534 1.5718664036508945
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    DEF BODY Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 0.05
+      }
+      device [
+        DEF wheel1 RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.06000190297626937 6.222736066410526e-06 0.049995882054905696
+        rotation -0.04651496824615402 0.046637305478202655 -0.9978283015964179 4.710224110905362
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel1"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+  ]
+  name "RL(1)"
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "RobotLightP"
+}
+DEF RobotLightC Robot {
+  translation -0.03 0.04 -0.46
+  children [
+    Receiver {
+      name "rec1"
+      channel 1
+    }
+    Receiver {
+      name "rec2"
+      channel 2
+    }
+    Emitter {
+      name "trans"
+      range 1
+      maxRange 1
+      channel 3
+    }
+    Compass {
+      name "com"
+    }
+    LightSensor {
+      translation -0.02 0.04 0.02
+      rotation 0 1 0 -2.35619
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls1"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation -0.02 0.04 -0.02
+      rotation 0 1 0 -3.92699
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls2"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation 0.02 0.04 -0.02
+      rotation 0 1 0 0.785398
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls3"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    LightSensor {
+      translation 0.02 0.04 0.02
+      rotation 0 1 0 -0.785398
+      children [
+        DEF ls Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 1 0
+            }
+          }
+          geometry Box {
+            size 0.01 0.04 0.01
+          }
+        }
+      ]
+      name "ls4"
+      boundingObject USE ls
+      physics Physics {
+      }
+    }
+    DistanceSensor {
+      translation 0 0 0.1
+      rotation 0 1 0 -1.5708
+      children [
+        DEF DS Shape {
+          appearance Appearance {
+            material Material {
+            }
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds"
+      boundingObject USE DS
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.2 400 0
+        0.5 1000 0
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 -0.05
+      }
+      device [
+        DEF wheel4 RotationalMotor {
+          name "wheel4"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL4 Solid {
+        translation -0.0600011439467911 -7.27323107847803e-06 -0.050007000643636196
+        rotation 0.0356552528023118 -0.035578889046606256 0.9987306171344766 1.572041262356637
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel4"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 -0.05
+      }
+      device [
+        DEF wheel3 RotationalMotor {
+          name "wheel3"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL3 Solid {
+        translation 0.05999894821702062 -1.2741722839671872e-05 -0.050004999358867895
+        rotation 0.035585638107516526 -0.03550842157983526 0.9987356078349212 1.5720432313517883
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel3"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 0.05
+      }
+      device [
+        DEF wheel2 RotationalMotor {
+          name "wheel2"
+          acceleration 1
+        }
+      ]
+      endPoint DEF WHEEL2 Solid {
+        translation -0.06000033156118792 -6.4861320194172466e-06 0.049992758909905656
+        rotation 0.03565519339646086 -0.03557895353660504 0.9987306169578967 1.572041003824911
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    DEF BODY Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 0.05
+      }
+      device [
+        DEF wheel1 RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.06000253063669747 7.495674672039051e-06 0.04998924455891034
+        rotation 0.054494920778387725 -0.054617321974972516 0.9970191832405431 1.5737720898507361
+        children [
+          DEF WHEEL Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 1
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel1"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+  ]
+  name "RL(2)"
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "RobotLightP"
+}
+FloorLight {
+  translation 0.1 0 4.29
+  pointLightIntensity 20
+}
+OilBarrel {
+  translation 0.18 0.44 0.4
+}
+OilBarrel {
+  translation -0.56 0.44 1.23
+  name "oil barrel(1)"
+}
